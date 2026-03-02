@@ -1,0 +1,654 @@
+{
+  "input": {
+    "workflow": {
+      "40": {
+        "inputs": {
+          "text": [
+            "285",
+            0
+          ],
+          "clip": [
+            "112",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "Positive Prompt"
+        }
+      },
+      "41": {
+        "inputs": {
+          "text": "score_6, score_5, score_4, text, censored, deformed, bad hand, child, children, teen, sky, car, cars",
+          "clip": [
+            "112",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "Negative Prompt"
+        }
+      },
+      "112": {
+        "inputs": {
+          "value": -1,
+          "clip": [
+            "183",
+            1
+          ]
+        },
+        "class_type": "CLIPSetLastLayer",
+        "_meta": {
+          "title": "CLIPSetLastLayer"
+        }
+      },
+      "116": {
+        "inputs": {
+          "upscale_model": [
+            "117",
+            0
+          ],
+          "image": [
+            "311",
+            0
+          ]
+        },
+        "class_type": "ImageUpscaleWithModel",
+        "_meta": {
+          "title": "ImageUpscaleWithModel"
+        }
+      },
+      "117": {
+        "inputs": {
+          "model_name": "4xNMKDSuperscale_4xNMKDSuperscale.pt"
+        },
+        "class_type": "UpscaleModelLoader",
+        "_meta": {
+          "title": "UpscaleModelLoader"
+        }
+      },
+      "119": {
+        "inputs": {
+          "anything": [
+            "128",
+            0
+          ]
+        },
+        "class_type": "easy cleanGpuUsed",
+        "_meta": {
+          "title": "easy cleanGpuUsed"
+        }
+      },
+      "120": {
+        "inputs": {
+          "upscale_model": [
+            "117",
+            0
+          ],
+          "image": [
+            "119",
+            0
+          ]
+        },
+        "class_type": "ImageUpscaleWithModel",
+        "_meta": {
+          "title": "ImageUpscaleWithModel"
+        }
+      },
+      "121": {
+        "inputs": {},
+        "class_type": "Label (rgthree)",
+        "_meta": {
+          "title": "Denoise between 0.2-0.4"
+        }
+      },
+      "124": {
+        "inputs": {
+          "text": "lanczos",
+          "image": [
+            "120",
+            0
+          ]
+        },
+        "class_type": "ImageScaleBy",
+        "_meta": {
+          "title": "ImageScaleBy"
+        }
+      },
+      "126": {
+        "inputs": {
+          "text": "lanczos",
+          "image": [
+            "116",
+            0
+          ]
+        },
+        "class_type": "ImageScaleBy",
+        "_meta": {
+          "title": "ImageScaleBy"
+        }
+      },
+      "127": {
+        "inputs": {
+          "value": 1536,
+          "pixels": [
+            "126",
+            0
+          ],
+          "vae": [
+            "183",
+            2
+          ]
+        },
+        "class_type": "VAEEncodeTiled",
+        "_meta": {
+          "title": "VAEEncodeTiled"
+        }
+      },
+      "128": {
+        "inputs": {
+          "value": 1536,
+          "samples": [
+            "129",
+            0
+          ],
+          "vae": [
+            "183",
+            2
+          ]
+        },
+        "class_type": "VAEDecodeTiled",
+        "_meta": {
+          "title": "VAEDecodeTiled"
+        }
+      },
+      "129": {
+        "inputs": {
+          "seed": 625132207971748,
+          "steps": 15,
+          "cfg": 6,
+          "sampler_name": "dpmpp_sde",
+          "scheduler": "karras",
+          "denoise": 0.2,
+          "model": [
+            "183",
+            0
+          ],
+          "positive": [
+            "40",
+            0
+          ],
+          "negative": [
+            "41",
+            0
+          ],
+          "latent_image": [
+            "127",
+            0
+          ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+          "title": "KSampler"
+        }
+      },
+      "151": {
+        "inputs": {
+          "value": [
+            {
+              "name": "A",
+              "selected": true,
+              "url": "/api/view?filename=rgthree.compare._temp_qnjui_00013_.png&type=temp&subfolder=&rand=0.3888573821774076"
+            },
+            {
+              "name": "B",
+              "selected": true,
+              "url": "/api/view?filename=rgthree.compare._temp_qnjui_00014_.png&type=temp&subfolder=&rand=0.502714087364057"
+            }
+          ],
+          "image_a": [
+            "294",
+            0
+          ],
+          "image_b": [
+            "124",
+            0
+          ]
+        },
+        "class_type": "Image Comparer (rgthree)",
+        "_meta": {
+          "title": "Image Comparer (rgthree)"
+        }
+      },
+      "183": {
+        "inputs": {
+          "filename": "SDXL/juggernautXL_ragnarokBy.safetensors"
+        },
+        "class_type": "Checkpoint Loader (Simple)",
+        "_meta": {
+          "title": "Checkpoint Loader (Simple)"
+        }
+      },
+      "243": {
+        "inputs": {},
+        "class_type": "Reroute",
+        "_meta": {
+          "title": "Reroute"
+        }
+      },
+      "272": {
+        "inputs": {
+          "text": "",
+          "images": [
+            "290",
+            0
+          ],
+          "output_path": [
+            "295",
+            0
+          ],
+          "filename_prefix": [
+            "296",
+            0
+          ]
+        },
+        "class_type": "Image Save",
+        "_meta": {
+          "title": "Image Save"
+        }
+      },
+      "275": {
+        "inputs": {
+          "text": "fast",
+          "image": [
+            "284",
+            0
+          ]
+        },
+        "class_type": "easy imageInterrogator",
+        "_meta": {
+          "title": "easy imageInterrogator"
+        }
+      },
+      "277": {
+        "inputs": {
+          "images": [
+            "284",
+            0
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "PreviewImage"
+        }
+      },
+      "278": {
+        "inputs": {
+          "text": "",
+          "images": [
+            "290",
+            0
+          ],
+          "output_path": [
+            "295",
+            0
+          ],
+          "filename_prefix": [
+            "296",
+            0
+          ]
+        },
+        "class_type": "Image Save",
+        "_meta": {
+          "title": "Save WEBP Lossy Image"
+        }
+      },
+      "281": {
+        "inputs": {
+          "text": "upscaled"
+        },
+        "class_type": "PrimitiveString",
+        "_meta": {
+          "title": "Output Folder (relative to comfy/output)"
+        }
+      },
+      "284": {
+        "inputs": {
+          "any_01": [
+            "323",
+            0
+          ],
+          "any_02": [
+            "304",
+            0
+          ]
+        },
+        "class_type": "Any Switch (rgthree)",
+        "_meta": {
+          "title": "Image Selector"
+        }
+      },
+      "285": {
+        "inputs": {
+          "text": ", ",
+          "text_a": [
+            "287",
+            0
+          ],
+          "text_b": [
+            "275",
+            0
+          ]
+        },
+        "class_type": "Text Concatenate",
+        "_meta": {
+          "title": "Text Concatenate"
+        }
+      },
+      "287": {
+        "inputs": {
+          "text": "score_9, score_10 BREAK photorealistic image of a woman, dark skin,, realistic skin, realistic face, high-resolution"
+        },
+        "class_type": "Text Multiline",
+        "_meta": {
+          "title": "Minimal Prompt"
+        }
+      },
+      "288": {
+        "inputs": {},
+        "class_type": "Reroute",
+        "_meta": {
+          "title": "Reroute"
+        }
+      },
+      "289": {
+        "inputs": {},
+        "class_type": "Reroute",
+        "_meta": {
+          "title": "Reroute"
+        }
+      },
+      "290": {
+        "inputs": {},
+        "class_type": "Reroute",
+        "_meta": {
+          "title": "Reroute"
+        }
+      },
+      "291": {
+        "inputs": {},
+        "class_type": "Reroute",
+        "_meta": {
+          "title": "Original Image"
+        }
+      },
+      "292": {
+        "inputs": {},
+        "class_type": "Reroute",
+        "_meta": {
+          "title": "Reroute"
+        }
+      },
+      "293": {
+        "inputs": {},
+        "class_type": "Reroute",
+        "_meta": {
+          "title": "Reroute"
+        }
+      },
+      "294": {
+        "inputs": {},
+        "class_type": "Reroute",
+        "_meta": {
+          "title": "Reroute"
+        }
+      },
+      "295": {
+        "inputs": {
+          "text": "",
+          "string_a": [
+            "288",
+            0
+          ]
+        },
+        "class_type": "StringConcatenate",
+        "_meta": {
+          "title": "output upscaled path"
+        }
+      },
+      "296": {
+        "inputs": {
+          "text": "",
+          "string_a": [
+            "289",
+            0
+          ]
+        },
+        "class_type": "StringConcatenate",
+        "_meta": {
+          "title": "4x filename"
+        }
+      },
+      "298": {
+        "inputs": {
+          "images": [
+            "124",
+            0
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "Preview Image Upscaled x4"
+        }
+      },
+      "299": {
+        "inputs": {
+          "filename": "output/to_upscale"
+        },
+        "class_type": "PrimitiveString",
+        "_meta": {
+          "title": "Input Folder (relative to comfy root)"
+        }
+      },
+      "304": {
+        "inputs": {
+          "filename": "ComfyUI_00079_.png"
+        },
+        "class_type": "Load image with metadata [Crystools]",
+        "_meta": {
+          "title": "Load image with metadata [Crystools]"
+        }
+      },
+      "305": {
+        "inputs": {
+          "any_01": [
+            "323",
+            1
+          ],
+          "any_02": [
+            "317",
+            0
+          ]
+        },
+        "class_type": "Any Switch (rgthree)",
+        "_meta": {
+          "title": "Filename Selector"
+        }
+      },
+      "307": {
+        "inputs": {
+          "text": "",
+          "string_a": [
+            "289",
+            0
+          ]
+        },
+        "class_type": "StringConcatenate",
+        "_meta": {
+          "title": "2x filename"
+        }
+      },
+      "308": {
+        "inputs": {
+          "text": "",
+          "images": [
+            "128",
+            0
+          ],
+          "output_path": [
+            "295",
+            0
+          ],
+          "filename_prefix": [
+            "307",
+            0
+          ]
+        },
+        "class_type": "Image Save",
+        "_meta": {
+          "title": "Image Save x2"
+        }
+      },
+      "309": {
+        "inputs": {
+          "value": 606295829452493
+        },
+        "class_type": "easy globalSeed",
+        "_meta": {
+          "title": "easy globalSeed"
+        }
+      },
+      "311": {
+        "inputs": {
+          "value": 512,
+          "image": [
+            "243",
+            0
+          ],
+          "width": [
+            "313",
+            0
+          ],
+          "height": [
+            "313",
+            1
+          ]
+        },
+        "class_type": "ImageResize+",
+        "_meta": {
+          "title": "ImageResize+"
+        }
+      },
+      "313": {
+        "inputs": {
+          "image": [
+            "243",
+            0
+          ]
+        },
+        "class_type": "CM_NearestSDXLResolution",
+        "_meta": {
+          "title": "CM_NearestSDXLResolution"
+        }
+      },
+      "315": {
+        "inputs": {
+          "text": "",
+          "images": [
+            "116",
+            0
+          ],
+          "output_path": [
+            "295",
+            0
+          ],
+          "filename_prefix": [
+            "307",
+            0
+          ]
+        },
+        "class_type": "Image Save",
+        "_meta": {
+          "title": "Image Save Simnplex4"
+        }
+      },
+      "316": {
+        "inputs": {
+          "metadata_raw": [
+            "304",
+            3
+          ]
+        },
+        "class_type": "Metadata extractor [Crystools]",
+        "_meta": {
+          "title": "Metadata extractor [Crystools]"
+        }
+      },
+      "317": {
+        "inputs": {
+          "text": "",
+          "string": [
+            "319",
+            1
+          ]
+        },
+        "class_type": "RegexExtract",
+        "_meta": {
+          "title": "Regex Extract only base filename without extension"
+        }
+      },
+      "318": {
+        "inputs": {
+          "text": [
+            "317",
+            0
+          ]
+        },
+        "class_type": "ShowText|pysssss",
+        "_meta": {
+          "title": "ShowText|pysssss"
+        }
+      },
+      "319": {
+        "inputs": {
+          "text": "fillename",
+          "json": [
+            "316",
+            2
+          ]
+        },
+        "class_type": "JSON extractor [Crystools]",
+        "_meta": {
+          "title": "JSON extractor [Crystools]"
+        }
+      },
+      "323": {
+        "inputs": {
+          "text": "incremental_image",
+          "path": [
+            "299",
+            0
+          ]
+        },
+        "class_type": "Load Image Batch",
+        "_meta": {
+          "title": "Load Image Batch"
+        }
+      },
+      "324": {
+        "inputs": {
+          "filename": "tensor([[[[0.0235, 0.0431, 0.0392],\n          [0.0275, 0.0431, 0.0431],\n          [0.0275, 0.0431, 0.0392],\n          ...,\n          [0.0157, 0.0667, 0.0824],\n          [0.0353, 0.0863, 0.1020],\n          [0.0510, 0.1059, 0.1098]],\n\n         [[0.0235, 0.0392, 0.0392],\n          [0.0235, 0.0392, 0.0471],\n          [0.0275, 0.0431, 0.0471],\n          ...,\n          [0.0471, 0.1020, 0.1216],\n          [0.0667, 0.1255, 0.1490],\n          [0.0667, 0.1137, 0.1412]],\n\n         [[0.0196, 0.0353, 0.0353],\n          [0.0275, 0.0392, 0.0353],\n          [0.0196, 0.0353, 0.0392],\n          ...,\n          [0.0667, 0.1294, 0.1529],\n          [0.0667, 0.1294, 0.1569],\n          [0.0667, 0.1176, 0.1490]],\n\n         ...,\n\n         [[0.1333, 0.1922, 0.2275],\n          [0.1255, 0.1922, 0.2235],\n          [0.1294, 0.1961, 0.2275],\n          ...,\n          [0.0196, 0.0196, 0.0235],\n          [0.0157, 0.0196, 0.0196],\n          [0.0157, 0.0157, 0.0196]],\n\n         [[0.1137, 0.1843, 0.2196],\n          [0.0980, 0.1686, 0.2000],\n          [0.1255, 0.1961, 0.2235],\n          ...,\n          [0.0196, 0.0196, 0.0235],\n          [0.0196, 0.0235, 0.0235],\n          [0.0196, 0.0157, 0.0196]],\n\n         [[0.1255, 0.1922, 0.2314],\n          [0.1333, 0.1961, 0.2275],\n          [0.1020, 0.1608, 0.2000],\n          ...,\n          [0.0157, 0.0157, 0.0157],\n          [0.0196, 0.0196, 0.0235],\n          [0.0235, 0.0275, 0.0275]]]])",
+          "anything": [
+            "275",
+            0
+          ]
+        },
+        "class_type": "easy showAnything",
+        "_meta": {
+          "title": "easy showAnything"
+        }
+      }
+    }
+  }
+}
